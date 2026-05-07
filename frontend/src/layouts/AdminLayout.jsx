@@ -9,6 +9,7 @@ export default function AdminLayout() {
     <div className="dashboard-shell">
       <aside className="sidebar">
         <div className="brand-lockup">
+          <span className="brand-mark-small">M</span>
           <span className="eyebrow">MarketOS</span>
           <strong>Super Admin</strong>
           <span className="subtle">{user?.email}</span>
@@ -19,7 +20,7 @@ export default function AdminLayout() {
           <NavLink to="/admin/vendors" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Vendors</NavLink>
         </nav>
 
-        <div style={{ marginTop: 24 }}>
+        <div className="sidebar-footer">
           <button
             className="button-secondary"
             onClick={() => {

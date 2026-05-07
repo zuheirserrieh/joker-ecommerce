@@ -9,14 +9,29 @@ export default function ProductsPage() {
   const [form, setForm] = useState(initialProduct)
   const [imagePreview, setImagePreview] = useState('')
   const [uploading, setUploading] = useState(false)
+  const [editingProductId, setEditingProductId] = useState(null)
 
-  const load = async () => {
+  async function load() {
     const { data } = await api.get('/vendor/products')
     setProducts(data.data)
   }
 
   useEffect(() => {
-    load()
+    let active = true
+
+    async function loadProducts() {
+      const { data } = await api.get('/vendor/products')
+
+      if (active) {
+        setProducts(data.data)
+      }
+    }
+
+    loadProducts()
+
+    return () => {
+      active = false
+    }
   }, [])
 
   async function handleImageUpload(event) {
@@ -46,20 +61,50 @@ export default function ProductsPage() {
     event.preventDefault()
 
     try {
-      await api.post('/vendor/products', form)
-      toast.success('Product created')
+      if (editingProductId) {
+        await api.patch(`/vendor/products/${editingProductId}`, form)
+        toast.success('Product updated')
+      } else {
+        await api.post('/vendor/products', form)
+        toast.success('Product created')
+      }
       setForm(initialProduct)
       setImagePreview('')
+      setEditingProductId(null)
       load()
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Could not create product')
+      toast.error(error.response?.data?.message || 'Could not save product')
     }
+  }
+
+  function editProduct(product) {
+    setEditingProductId(product.id)
+    setForm({
+      name: product.name || '',
+      price: product.price || '',
+      cost_price: product.cost_price || '',
+      stock_qty: product.stock_qty || '',
+      low_stock_threshold: product.low_stock_threshold || 5,
+      image_url: product.image_url || '',
+      ai_description: product.ai_description || '',
+      category_id: product.category_id || '',
+    })
+    setImagePreview(product.image_url || '')
+  }
+
+  function cancelEdit() {
+    setEditingProductId(null)
+    setForm(initialProduct)
+    setImagePreview('')
   }
 
   return (
     <div className="split">
       <div className="card">
-        <h3>Add Product</h3>
+        <div className="row space-between">
+          <h3>{editingProductId ? 'Edit Product' : 'Add Product'}</h3>
+          {editingProductId ? <button className="button-secondary" type="button" onClick={cancelEdit}>Cancel</button> : null}
+        </div>
         <form className="form-grid" onSubmit={createProduct}>
           <label className="field"><span>Product Photo</span>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -92,7 +137,12 @@ export default function ProductsPage() {
           <label className="field"><span>Price</span><input type="number" value={form.price} onChange={(event) => setForm({ ...form, price: event.target.value })} required /></label>
           <label className="field"><span>Cost Price</span><input type="number" value={form.cost_price} onChange={(event) => setForm({ ...form, cost_price: event.target.value })} /></label>
           <label className="field"><span>Stock Qty</span><input type="number" value={form.stock_qty} onChange={(event) => setForm({ ...form, stock_qty: event.target.value })} /></label>
-          <button className="button">Save Product</button>
+          <label className="field"><span>Photo URL</span><input value={form.image_url} onChange={(event) => {
+            setForm({ ...form, image_url: event.target.value })
+            setImagePreview(event.target.value)
+          }} /></label>
+          <label className="field"><span>AI Comment</span><textarea value={form.ai_description || ''} onChange={(event) => setForm({ ...form, ai_description: event.target.value })} rows="4" /></label>
+          <button className="button">{editingProductId ? 'Update Product' : 'Save Product'}</button>
         </form>
       </div>
 
@@ -100,7 +150,7 @@ export default function ProductsPage() {
         <h3>Catalog</h3>
         <table className="table">
           <thead>
-            <tr><th>Photo</th><th>Name</th><th>Price</th><th>Stock</th><th>Status</th></tr>
+            <tr><th>Photo</th><th>Name</th><th>Price</th><th>Stock</th><th>Status</th><th>Action</th></tr>
           </thead>
           <tbody>
             {products.map((product) => (
@@ -127,6 +177,7 @@ export default function ProductsPage() {
                 <td>${Number(product.price).toFixed(2)}</td>
                 <td>{product.stock_qty}</td>
                 <td>{product.is_active ? 'Active' : 'Hidden'}</td>
+                <td><button className="button-secondary" type="button" onClick={() => editProduct(product)}>Edit</button></td>
               </tr>
             ))}
           </tbody>

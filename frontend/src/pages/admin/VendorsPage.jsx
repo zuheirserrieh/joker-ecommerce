@@ -8,13 +8,27 @@ export default function VendorsPage() {
   const [vendors, setVendors] = useState([])
   const [form, setForm] = useState(initialForm)
 
-  const load = async () => {
+  async function load() {
     const { data } = await api.get('/admin/vendors')
     setVendors(data.data)
   }
 
   useEffect(() => {
-    load()
+    let active = true
+
+    async function loadVendors() {
+      const { data } = await api.get('/admin/vendors')
+
+      if (active) {
+        setVendors(data.data)
+      }
+    }
+
+    loadVendors()
+
+    return () => {
+      active = false
+    }
   }, [])
 
   async function createVendor(event) {

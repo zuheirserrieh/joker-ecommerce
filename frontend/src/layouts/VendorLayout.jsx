@@ -9,6 +9,7 @@ export default function VendorLayout() {
     <div className="dashboard-shell">
       <aside className="sidebar">
         <div className="brand-lockup">
+          <span className="brand-mark-small">M</span>
           <span className="eyebrow">{user?.market_type || 'General Market'}</span>
           <strong>{user?.name || 'Vendor Hub'}</strong>
           <span className="subtle">{user?.email}</span>
@@ -24,7 +25,7 @@ export default function VendorLayout() {
           {user?.slug ? <NavLink to={`/${user.slug}`} className="nav-link">Public Store</NavLink> : null}
         </nav>
 
-        <div style={{ marginTop: 24 }}>
+        <div className="sidebar-footer">
           <button
             className="button-secondary"
             onClick={() => {

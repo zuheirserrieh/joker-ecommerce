@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { api } from '../../lib/api'
-import { useCart } from '../../context/CartContext'
+import { useCart } from '../../context/useCart'
 
 export default function CheckoutPage() {
   const { vendorSlug } = useParams()
@@ -31,8 +31,8 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="split split-store">
-      <div className="card checkout-card">
+    <div className="checkout-layout">
+      <div className="checkout-card">
         <div className="section-heading">
           <div>
             <span className="eyebrow">Order</span>
@@ -60,7 +60,7 @@ export default function CheckoutPage() {
         </div>
       </div>
 
-      <form className="card form-grid checkout-form" onSubmit={submitOrder}>
+      <form className="checkout-card form-grid checkout-form" onSubmit={submitOrder}>
         <div className="section-heading">
           <div>
             <span className="eyebrow">Details</span>
@@ -77,7 +77,11 @@ export default function CheckoutPage() {
             <option value="online">Online Payment</option>
           </select>
         </label>
-        <button className="button" disabled={!items.length}>Place Order</button>
+        {items.length ? (
+          <button className="button">Place Order</button>
+        ) : (
+          <Link className="button" to={`/${vendorSlug}`}>Continue Shopping</Link>
+        )}
       </form>
     </div>
   )

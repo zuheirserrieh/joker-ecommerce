@@ -43,5 +43,7 @@ class DatabaseSeeder extends Seeder
 
         $admin->assignRole($adminRole);
         $vendor->assignRole($vendorRole);
+
+        $this->call(VendorShowcaseSeeder::class);
     }
 }
