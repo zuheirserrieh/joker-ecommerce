@@ -68,7 +68,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 945.00,
                             'stock_qty' => 12,
                             'low_stock_threshold' => 3,
-                            'image_url' => 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80',
+                            'image_url' => '/demo-products/novabook-pro-14.svg',
                             'ai_description' => 'A slim 14-inch performance laptop for creators, students, and mobile teams. Equipped with Intel Core i7, 16GB RAM, and 512GB SSD for seamless multitasking.',
                         ],
                         [
@@ -78,7 +78,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 1240.00,
                             'stock_qty' => 8,
                             'low_stock_threshold' => 2,
-                            'image_url' => 'https://images.unsplash.com/photo-1588872657840-218e86e742ba?w=500&q=80',
+                            'image_url' => '/demo-products/atlas-gaming-16.svg',
                             'ai_description' => 'A 16-inch gaming powerhouse with RTX 4060, 165Hz display, and advanced cooling. Perfect for competitive gaming and content creation.',
                         ],
                         [
@@ -88,7 +88,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 640.00,
                             'stock_qty' => 15,
                             'low_stock_threshold' => 4,
-                            'image_url' => 'https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=500&q=80',
+                            'image_url' => '/demo-products/ultrabook-air-13.svg',
                             'ai_description' => 'Lightweight 13-inch ultrabook weighing only 2.8 lbs. 24-hour battery life, perfect for professionals on the move.',
                         ],
                         [
@@ -98,7 +98,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 18.00,
                             'stock_qty' => 45,
                             'low_stock_threshold' => 8,
-                            'image_url' => 'https://images.unsplash.com/photo-1633802241481-7f8eea34d400?w=500&q=80',
+                            'image_url' => '/demo-products/precision-repair-toolkit.svg',
                             'ai_description' => 'Complete 82-piece toolkit with precision screwdrivers, pry tools, and cleaning supplies. Professional grade for laptop and PC repairs.',
                         ],
                         [
@@ -108,7 +108,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 12.50,
                             'stock_qty' => 20,
                             'low_stock_threshold' => 6,
-                            'image_url' => 'https://images.unsplash.com/photo-1586253408898-fbb40a52f2d2?w=500&q=80',
+                            'image_url' => '/demo-products/anti-static-service-mat.svg',
                             'ai_description' => 'Grounded work mat (24" x 36") with wrist strap. Protects sensitive components during assembly and repair work.',
                         ],
                         [
@@ -118,7 +118,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 7.50,
                             'stock_qty' => 38,
                             'low_stock_threshold' => 10,
-                            'image_url' => 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80',
+                            'image_url' => '/demo-products/precision-repair-toolkit.svg',
                             'ai_description' => 'Professional thermal paste with cleaning solution. Improves CPU/GPU cooling performance and extends hardware lifespan.',
                         ],
                         [
@@ -128,7 +128,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 51.00,
                             'stock_qty' => 28,
                             'low_stock_threshold' => 5,
-                            'image_url' => 'https://images.unsplash.com/photo-1630998318168-39953effb2b0?w=500&q=80',
+                            'image_url' => '/demo-products/nvme-performance-ssd.svg',
                             'ai_description' => 'Samsung 990 Pro NVMe SSD. PCIe 4.0 speed, read speeds up to 7,100 MB/s. Ideal for gaming and professional workloads.',
                         ],
                         [
@@ -138,7 +138,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 78.00,
                             'stock_qty' => 16,
                             'low_stock_threshold' => 4,
-                            'image_url' => 'https://images.unsplash.com/photo-1620411441646-1abdd6b05fe2?w=500&q=80',
+                            'image_url' => '/demo-products/nvme-performance-ssd.svg',
                             'ai_description' => 'Corsair DDR5 RAM (2x16GB). 5600MHz speed, CAS latency 36. Future-proof your system with next-gen memory.',
                         ],
                         [
@@ -148,7 +148,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 390.00,
                             'stock_qty' => 6,
                             'low_stock_threshold' => 2,
-                            'image_url' => 'https://images.unsplash.com/photo-1596524430218-95e5e92d7000?w=500&q=80',
+                            'image_url' => '/demo-products/nvme-performance-ssd.svg',
                             'ai_description' => 'NVIDIA RTX 4070 with 12GB GDDR6. Exceptional 1440p gaming and 4K content creation performance.',
                         ],
                         [
@@ -158,7 +158,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 32.00,
                             'stock_qty' => 18,
                             'low_stock_threshold' => 5,
-                            'image_url' => 'https://images.unsplash.com/photo-1579033127669-776a0245dd38?w=500&q=80',
+                            'image_url' => '/demo-products/usb-c-docking-hub.svg',
                             'ai_description' => '8-in-1 USB-C hub with 4K HDMI, USB 3.0, SD card reader, and 100W power delivery. One cable to replace them all.',
                         ],
                         [
@@ -168,7 +168,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 24.00,
                             'stock_qty' => 22,
                             'low_stock_threshold' => 6,
-                            'image_url' => 'https://images.unsplash.com/photo-1518611505868-d2b4fd36b785?w=500&q=80',
+                            'image_url' => '/demo-products/novabook-pro-14.svg',
                             'ai_description' => 'Dual fan cooling pad with 6-level height adjustment. Reduces laptop temperature by up to 15°C during gaming.',
                         ],
                         [
@@ -178,7 +178,7 @@ class VendorShowcaseSeeder extends Seeder
                             'cost_price' => 52.00,
                             'stock_qty' => 12,
                             'low_stock_threshold' => 4,
-                            'image_url' => 'https://images.unsplash.com/photo-1587829191301-4e4f3e21c25c?w=500&q=80',
+                            'image_url' => '/demo-products/atlas-gaming-16.svg',
                             'ai_description' => 'RGB mechanical keyboard with Cherry MX switches. 144+ polling rate, programmable keys, and aluminum case.',
                         ],
                     ],
