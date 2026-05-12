@@ -44,11 +44,14 @@ Route::prefix('vendor')->middleware(['auth:sanctum', 'vendor'])->group(function 
     Route::get('settings', [SettingsController::class, 'show']);
     Route::put('settings', [SettingsController::class, 'update']);
     Route::post('uploads/product-image', [UploadController::class, 'storeProductImage']);
+    Route::post('uploads/logo', [UploadController::class, 'storeStoreLogo']);
 
     Route::prefix('ai')->group(function () {
         Route::get('low-stock-alerts', [AiToolsController::class, 'lowStockAlerts']);
         Route::get('sales-forecast', [AiToolsController::class, 'salesForecast']);
         Route::get('earnings-summary', [AiToolsController::class, 'earningsSummary']);
+        Route::get('customer-insights', [AiToolsController::class, 'customerInsights']);
+        Route::get('pricing-recommendation', [AiToolsController::class, 'pricingRecommendation']);
         Route::post('product-description', [AiToolsController::class, 'productDescription']);
     });
 });

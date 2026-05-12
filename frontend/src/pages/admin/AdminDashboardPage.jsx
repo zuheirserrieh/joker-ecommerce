@@ -22,8 +22,6 @@ export default function AdminDashboardPage() {
       <div className="grid cols-4">
         <div className="card metric"><span className="subtle">Vendors</span><strong>{data.vendors_count}</strong></div>
         <div className="card metric"><span className="subtle">Active Vendors</span><strong>{data.active_vendors_count}</strong></div>
-        <div className="card metric"><span className="subtle">Revenue</span><strong>${Number(data.platform_revenue).toFixed(2)}</strong></div>
-        <div className="card metric"><span className="subtle">Profit</span><strong>${Number(data.platform_profit).toFixed(2)}</strong></div>
       </div>
 
       <div className="card">

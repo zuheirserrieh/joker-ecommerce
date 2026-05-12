@@ -28,4 +28,22 @@ class UploadController extends Controller
             'url' => Storage::disk('public')->url($path),
         ], 201);
     }
+
+    public function storeStoreLogo(Request $request): JsonResponse
+    {
+        $request->validate([
+            'image' => ['required', 'image', 'max:2048'],
+        ]);
+
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read($request->file('image'))->scaleDown(width: 500, height: 500)->toJpeg(85);
+        $path = 'logos/'.uniqid('', true).'.jpg';
+
+        Storage::disk('public')->put($path, (string) $image);
+
+        return response()->json([
+            'path' => $path,
+            'url' => Storage::disk('public')->url($path),
+        ], 201);
+    }
 }

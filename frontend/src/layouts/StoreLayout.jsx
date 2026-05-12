@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import { useCart } from '../context/useCart'
 import { api } from '../lib/api'
+import StoreFooter from '../components/StoreFooter'
 
 const defaultSettings = {
   header_brand: 'MarketOS',
@@ -60,6 +61,8 @@ export default function StoreLayout() {
       <main className="store-main">
         <Outlet />
       </main>
+
+      <StoreFooter store={storeShell} settings={storeShell.settings} />
     </div>
   )
 }

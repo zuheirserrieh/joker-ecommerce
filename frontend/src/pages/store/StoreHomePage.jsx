@@ -162,9 +162,29 @@ export default function StoreHomePage() {
 function ProductMedia({ product, brandColor }) {
   const [failed, setFailed] = useState(false)
   const imageUrl = failed ? null : product?.image_url
+  
+  // Get category-specific gradient
+  const getCategoryGradient = (category) => {
+    const categoryName = category?.name?.toLowerCase() || ''
+    
+    if (categoryName.includes('fashion') || categoryName.includes('cloth')) {
+      return 'linear-gradient(145deg, #8b7355, #d4a574)'
+    }
+    if (categoryName.includes('food') || categoryName.includes('drink')) {
+      return 'linear-gradient(145deg, #d4713d, #f4a261)'
+    }
+    if (categoryName.includes('tech') || categoryName.includes('gadget') || categoryName.includes('electronic')) {
+      return 'linear-gradient(145deg, #264653, #2a9d8f)'
+    }
+    
+    // Default fallback
+    return `linear-gradient(145deg, ${brandColor}, #f5c15f)`
+  }
+  
+  const gradient = getCategoryGradient(product?.category)
 
   return (
-    <div className="product-media" style={{ background: `linear-gradient(145deg, ${brandColor}, #f5c15f)` }}>
+    <div className="product-media" style={{ background: gradient }}>
       {imageUrl ? <img src={imageUrl} alt={product.name} onError={() => setFailed(true)} /> : null}
       {!imageUrl && <span>{product?.name?.slice(0, 1) || 'M'}</span>}
     </div>
